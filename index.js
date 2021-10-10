@@ -8,18 +8,19 @@ const app = express();
 
 app.use(cors());
 
+//Lectura y parseo del body
+app.use(express.json());
+
 //Establece conexion a la DB
 dbConection();
 //Verificando variable de entorno
 //console.log(process.env);
 
 //Rutas de la API proyectos
-app.get('/',(req, res)=>{
-  res.status(400).json({
-      ok:true,
-      msg:'Bienvenidos a Node.js'
-  });
-});
+
+//Rutas de la API
+app.use('/api/usuarios', require('./routes/usuarios.route'));
+app.use('/api/login', require('./routes/auth.route'));
 //Codigo para desplegar el servidor
 
 app.listen(process.env.PORT,()=>{
