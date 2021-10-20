@@ -1,11 +1,11 @@
 const {Schema, model} = require('mongoose');
-//Calse, tipó declarativo
+//Clase, tipó declarativo
 //Definicion del esquema para la coleccion de Usuario
 //
 const UsuarioSchema = Schema({
     nombre:{
         type: String,
-    require: true
+        require: true
     },
     email:{
         type: String,
@@ -16,18 +16,26 @@ const UsuarioSchema = Schema({
         type: String,
         require: true
     },
+    direccion:{
+        type: String,
+        require:true
+    },
+    num_celular:{
+        type: String,
+        require:true
+    },
     img:{
         type: String
-        },
+    },
     role:{
         type: String,
-        require: true,
+        required: true,
         default: 'USER_ROLE'
-    },
+    }, 
     google:{
         type: Boolean,
-        default: false
- },
+        default: false 
+    },
 });
 //Configuración opcional para cambiar el id por Uid
 //Este cambio es solo para fines visuales en BD

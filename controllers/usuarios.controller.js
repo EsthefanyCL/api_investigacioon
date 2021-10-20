@@ -1,12 +1,12 @@
 const {response} = require('express');
 const bcrypt = require('bcryptjs');
+const Usuario = require('../models/usuario.model');
 
-const Usuario = require("../models/usuario.model");
 
 const getUsuarios = async(req, res)=>{
     
     //const usuraios = await Usuario.find();
-    const usuarios = await Usuario.find({},'nombre email role google')
+    const usuarios = await Usuario.find({},'nombre email direccion celular _id')
     
     res.json({
         ok:true,
@@ -39,7 +39,7 @@ const crearUsuario = async (req, res=response) => {
         
         res.json({
             ok:true,
-            usuario
+            usuario: 'Usuario'
     });
     
     } catch (error) {
@@ -48,8 +48,7 @@ const crearUsuario = async (req, res=response) => {
             ok:false,
             msg: 'Error en el servidor, revisar logs'
         });
-    }
-    
+    }  
 }
 const actualizarUsuario = async (req, res= response)=>{
     const uid = req.params.id;
